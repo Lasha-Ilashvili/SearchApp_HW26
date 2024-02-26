@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SearchApp_HW26</string>
+    <string name="search_categories">Search Categories</string>
+    <string name="suggestions">Suggestions</string>
+</resources>
