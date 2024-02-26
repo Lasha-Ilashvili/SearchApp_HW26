@@ -1,6 +1,7 @@
 package com.example.searchapp_hw26.presentation.screen.search_page.adapter
 
 import android.view.LayoutInflater
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -30,9 +31,19 @@ class SearchPageRecyclerView :
 
         fun bind() {
             val category = currentList[adapterPosition]
+            val size = category.parentCount
 
             with(binding) {
                 tvName.text = category.name
+
+                rvChild.adapter = DotsRecyclerViewAdapter().apply {
+
+                    setSize(category.parentCount)
+                }
+
+                if (size != 0) {
+                    rvChild.visibility = VISIBLE
+                }
             }
         }
     }
