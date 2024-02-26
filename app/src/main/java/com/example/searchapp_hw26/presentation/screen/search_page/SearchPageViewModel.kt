@@ -6,8 +6,8 @@ import com.example.searchapp_hw26.data.common.Resource
 import com.example.searchapp_hw26.domain.usecase.GetCategoriesUseCase
 import com.example.searchapp_hw26.domain.usecase.GetFilteredCategoriesUseCase
 import com.example.searchapp_hw26.presentation.event.SearchPageEvent
+import com.example.searchapp_hw26.presentation.extension.flattenTree
 import com.example.searchapp_hw26.presentation.mapper.toPresentation
-import com.example.searchapp_hw26.presentation.model.Category
 import com.example.searchapp_hw26.presentation.state.SearchPageState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -65,17 +65,6 @@ class SearchPageViewModel @Inject constructor(
                 }
             }
         }
-    }
-
-    private fun Category.flattenTree(): MutableList<Category> {
-        val flatList = mutableListOf<Category>()
-        flatList.add(this)
-
-        children.forEach { child ->
-            flatList.addAll(child.flattenTree())
-        }
-
-        return flatList
     }
 
     private fun updateErrorMessage(message: String? = null) {
